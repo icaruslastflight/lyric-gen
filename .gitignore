@@ -1,0 +1,17 @@
+__pycache__/
+*.pyc
+*.pyo
+*.egg-info/
+dist/
+build/
+*.spec.bak
+preferences.json
+*.wav
+*.tmp
+.env
+*.exe
+
+.venv/
+*.log
+screenshot_gui.py
+

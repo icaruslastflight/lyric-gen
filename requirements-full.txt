@@ -1,0 +1,2 @@
+-r requirements-min.txt
+librosa>=0.10.0

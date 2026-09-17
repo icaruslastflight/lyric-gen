@@ -1,0 +1,33 @@
+Lyric Gen v1.0 — Third-Party Licenses & Attribution
+=====================================================
+
+python-prodj-link
+  License: Apache License 2.0
+  Source:  https://github.com/flesniak/python-prodj-link
+  Copyright (c) the python-prodj-link authors
+
+python-osc
+  License: The Unlicense (Public Domain)
+  Source:  https://github.com/attwad/python-osc
+
+PyAudio / PortAudio
+  License: MIT License
+  Copyright (c) 2006 Hubert Pham
+
+numpy
+  License: BSD License
+  Copyright (c) 2005-2024, NumPy Developers
+
+librosa
+  License: ISC License
+  Copyright (c) 2013-2024, librosa development team
+
+requests
+  License: Apache License 2.0
+  Copyright (c) Kenneth Reitz & contributors
+
+Song recognition powered by ACRCloud (https://www.acrcloud.com)
+  Users provide their own ACRCloud API credentials.
+
+Synced lyrics provided by LRCLIB (https://lrclib.net)
+  Community-contributed synchronized lyrics database.

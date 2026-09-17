@@ -1,0 +1,61 @@
+{
+  "resolume": {
+    "ip": "127.0.0.1",
+    "osc_port": 7000,
+    "listen_ip": "0.0.0.0",
+    "listen_port": 7001,
+    "bpm_min": 20.0,
+    "bpm_max": 500.0,
+    "tempo_osc_mode": "normalized",
+    "send_bpm": true,
+    "lyric_layer": 4,
+    "lyric_clip": 4,
+    "next_lyric_layer": 3,
+    "next_lyric_clip": 4,
+    "text_source_type": "blocktextgenerator"
+  },
+  "audio": {
+    "device_index": null,
+    "sample_rate": 44100,
+    "channels": 1
+  },
+  "acrcloud": {
+    "host": "",
+    "access_key": "",
+    "access_secret": "",
+    "interval": 15,
+    "record_duration": 10,
+    "confirm_scans": 2
+  },
+  "beat": {
+    "sensitivity": 0.5,
+    "use_librosa_tempo": false
+  },
+  "bpm_stability": {
+    "history_size": 24,
+    "smoothing_alpha": 0.15,
+    "send_threshold": 0.8,
+    "min_emit_interval_sec": 0.75,
+    "jump_limit_bpm": 50.0,
+    "enforce_jump_limit": true,
+    "max_change_per_update": 2.0,
+    "min_bpm": 60.0,
+    "max_bpm": 200.0,
+    "harmonic_snap": true
+  },
+  "lyrics": {
+    "offset_sec": 0.0,
+    "ab_alternation": false,
+    "fetch_timeout_sec": 10,
+    "clear_on_song_change": true,
+    "sync_deadband_sec": 0.25,
+    "sync_max_step_sec": 0.35
+  },
+  "prodj": {
+    "enabled": false,
+    "player_number": 5
+  },
+  "ui": {
+    "always_on_top": false
+  }
+}
