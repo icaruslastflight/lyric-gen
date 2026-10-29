@@ -2,6 +2,10 @@
 
 Lyric Gen is a Windows sidecar for Resolume Arena that sends beat/tempo and synced lyric text over OSC for live VJ sets.
 
+![Lyric Gen signal flow from audio input to Resolume](docs/media/signal-flow.svg)
+
+*Architecture diagram based on the current modules. It is not a live performance capture or an accuracy benchmark.*
+
 ## What this beta includes
 
 - Real-time BPM and beat pulse output over OSC
@@ -19,42 +23,37 @@ Lyric Gen is a Windows sidecar for Resolume Arena that sends beat/tempo and sync
 - Internet access for ACRCloud and LRCLIB APIs
 - Optional: ACRCloud project credentials for automatic song ID
 
-## What the installer installs
+## Run from source
 
-The installer places Lyric Gen into `Program Files\\Lyric Gen` with:
+The repository contains the Python app and launcher. An installer and its build recipe are not included in this source snapshot; start from a clone using the commands below.
 
-- The app source/runtime files
-- `Lyric Gen.bat` launcher
-- Default preferences template (`preferences_default.json`)
-- Documentation (`README.md`, `docs/SETUP_RESOLUME.md`, `CREDITS.txt`)
-- App and installer icons
-
-The installer does **not** bundle your ACRCloud credentials, your local `preferences.json`, or interconnect-only bridge tooling.
-
-## First run
-
-1. Launch `Lyric Gen` from Start Menu or desktop shortcut.
-2. If dependencies are missing, open Command Prompt in the install folder and run:
-
-```bash
-py -3 -m pip install -r requirements-min.txt
+```powershell
+git clone https://github.com/icaruslastflight/lyric-gen.git
+cd lyric-gen
+py -3.11 -m venv .venv
+.\.venv\Scripts\python.exe -m pip install -r requirements-min.txt
+.\.venv\Scripts\python.exe run.py
 ```
 
-Optional (experimental librosa tempo path):
+The window can be opened before connecting Resolume or supplying recognition credentials. Configure your targets before pressing **START**. The launcher `Lyric Gen.bat` uses this local virtual environment when present.
 
-```bash
-py -3 -m pip install -r requirements-full.txt
+Optional experimental tempo analysis:
+
+```powershell
+.\.venv\Scripts\python.exe -m pip install -r requirements-full.txt
 ```
+
+GUI preferences are stored in `%APPDATA%\LyricGen\preferences.json`. Keep recognition credentials in that local file; do not add it to Git.
 
 ## First-time Resolume setup
 
-Detailed guide: `docs/SETUP_RESOLUME.md`
+Detailed guide: [Resolume setup](docs/SETUP_RESOLUME.md)
 
 Quick version:
 
 1. Create two text clips in Resolume (current line and next line).
 2. In Lyric Gen > Preferences > Resolume, set target layer/clip pairs.
-3. Confirm Resolume OSC target (`ip`, `osc_port`) and command listen port (`7020` default).
+3. Confirm Resolume OSC target (`ip`, `osc_port`) and Lyric Gen listen port (`7001` by default; automatic fallback to `7020` if `7001` is occupied).
 4. Start Lyric Gen and confirm text appears in your target clips.
 
 ## ACRCloud setup (for song ID)
@@ -110,7 +109,7 @@ Please include:
   - `/lyricgen/lyrics/current`
   - `/lyricgen/lyrics/next`
   - `/lyricgen/lyrics/progress`
-- Command input (default listen port `7020`):
+- Command input (default listen port `7001`; fallback `7020` when occupied):
   - `/lyricgen/cmd/start`
   - `/lyricgen/cmd/stop`
   - `/lyricgen/cmd/rescan`
